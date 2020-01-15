@@ -9,7 +9,7 @@
 
 <script>
   export default {
-    name: 'slot'
+    name: 'slotDemo'
   }
 </script>
 

@@ -30,6 +30,14 @@
             <child5></child5>
             <child6></child6>
         </div>
+        <div style="border:1px solid purple;margin-top: 20px">
+            <h3>插槽</h3>
+            <slot-demo>
+                <template v-slot="slogan">
+                    更高 更快 更强
+                </template>
+            </slot-demo>
+        </div>
 
 
     </div>
@@ -42,9 +50,10 @@
   import child4 from './child4'
   import child5 from './child5'
   import child6 from './child6'
+  import slotDemo from './slotDemo'
   export default {
     name: 'index',
-    components:{child,child2,child3,child4,child5,child6},
+    components:{child,child2,child3,child4,child5,child6,slotDemo},
     provide(){
       return {mission:'世代保佑镇魂街道的安全，保护家人'}
     },
