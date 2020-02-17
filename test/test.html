@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/lodash.js/4.17.15/lodash.core.js"></script>
+</head>
+<body>
+<script>
+  console.log(_.has({ 'a': 'ceshi', 'b': 'xiaonmi' }, 'b'))
+  // console.log(_.has({ 'a': {'b':'wocao'} }, ['a','bb']))
+  var object = { 'a': { 'b': 2 } };
+  console.log(_.has(object, ['a','b']))
+  var other = _.create({ 'a': _.create({ 'b': 2 }) });
+</script>
+</body>
+</html>
