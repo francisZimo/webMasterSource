@@ -1,0 +1,7 @@
+.border{
+    width:300px;
+    border:1px solid red;
+    text-align: center;
+    padding: 5px ;
+    margin-top:10px;
+}
