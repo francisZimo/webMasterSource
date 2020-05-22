@@ -3,9 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="https://www.jsdelivr.com/package/npm/lodash"></script>
     <script src="vue1.js"></script>
 </head>
 <body>
+<div id="app">
+    2222
+    {{a.c.e}}xxxxxxx{{a.b}}
+    <div>
+        <h3>
+            {{b}}
+            <p>
+                {{c}}
+            </p>
+        </h3>
+        <h2>
+            我是h2
+        </h2>
+    </div>
+</div>
 
+<script>
+  let app = new Vue({
+    el:'#app',
+    data:{
+      a:{b:111,c:{e:'我是深层嵌套'}},
+      b:'我是b',
+      c:'我是c'
+    }
+  })
+</script>
 </body>
 </html>

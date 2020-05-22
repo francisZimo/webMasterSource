@@ -3,8 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
 </head>
 <body>
+<script>
+  // 1587052800000
+let installment= [
+  {
+    text: '150',
+    startTime: 1587312000
+  },
+  {
+    text: '153',
+    startTime: 1587571200
+  },
+  {
+    text: '155',
+    startTime: 1587916800
+  },
+  {
+    text: '157',
+    startTime: 1588176000
+  },
+  {
+    text: '159',
+    startTime: 1588521600
+  },
+  {
+    text: '161',
+    startTime: 1588780800
+  },
+  {
+    text: '163',
+    startTime: 1589126400
+  },
+  {
+    text: '165',
+    startTime: 1589385600
+  },
+  {
+    text: '167',
+    startTime: 1589731200
+  },
+  {
+    text: '169',
+    startTime: 1589990400
+  },
+  {
+    text: '171',
+    startTime: 1590336000
+  },
+  {
+    text: '173',
+    startTime: 1590595200
+  },
+  {
+    text: '175',
+    startTime: 1590940800
+  },
+  {
+    text: '177',
+    startTime: 1591200000
+  },
+  {
+    text: '179',
+    startTime: 1591545600
+  },{
+    text: '181',
+    startTime: 1591804800
+  }
+]
+const dateRange=2 // 最少为2项
+function getClassStages(data){
+  let currentDateTime=moment().startOf('day').valueOf()/1000 // 今天日期时间戳
+  let result=[]
 
+    let arrayStart=data[0]
+    let arrayEnd=data[data.length-1]
+    if(currentDateTime<=arrayStart.startTime){
+      result= getStartArray(data)
+      return result
+    }
+    if(currentDateTime>=arrayEnd.startTime){
+      result=getEndArray(data)
+      return result
+    }
+
+    result=gerRangeArray(data,currentDateTime)
+    return result
+
+}
+
+function getStartArray(data){
+  let result=[]
+  for(let i=0;i<dateRange;i++){
+    result.push(data[i])
+  }
+  return result
+}
+function getEndArray(data){
+  let result=[]
+  let length=data.length
+  for(let i=length-dateRange;i<length;i++){
+    result.push(data[i])
+  }
+  return result
+}
+function gerRangeArray(data,currentDateTime){
+  let result=[]
+  let rangeStartOfLast3=data[data.length-dateRange].startTime
+  let rangeEndOfLast3=data[data.length-1].startTime
+  if(currentDateTime>=rangeStartOfLast3&&currentDateTime<=rangeEndOfLast3){ // 数组后三项区间内
+    result= getEndArray(data)
+    return result
+  }
+
+  // 其他情况
+  let moreThanToday=false // >= today 区分情况
+
+  let index=-1;
+  for(let i=0;i<data.length;i++){
+    let item=data[i]
+    if(currentDateTime===item.startTime){
+      index=i
+      break
+    }
+    if(currentDateTime>item.startTime){
+      if(data[i+1]&&currentDateTime<data[i+1].startTime){
+        moreThanToday=true
+        index=i
+        break
+      }
+    }
+  }
+
+  if(index!==-1&&data[index+(dateRange-1)]){
+    let startIndex=moreThanToday?index+1:index
+    for(let i=startIndex;i<startIndex+dateRange;i++){
+      result.push(data[i])
+    }
+  }
+  return result
+}
+
+console.log(getClassStages(installment),'====result')
+
+</script>
 </body>
 </html>

@@ -10,17 +10,15 @@ files.keys().forEach(key=>{
   routeList.push(...child)
 })
 
-console.log(routeList,'==routeList')
 const SubRoute=()=>{
   return(
     <BrowserRouter>
       <Switch>
         {
           routeList.map(value=>{
-            console.log('xxx',value.component)
             return(
               <PrivateRoute
-                exact
+                exact={value.exact===undefined?true:false}
                 path={value.path}
                 key={value.path}
                 component={la(value.component)}

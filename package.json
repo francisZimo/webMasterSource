@@ -1,6 +1,11 @@
 {
   "dependencies": {
+    "download-git-repo": "^3.0.2",
+    "global": "^4.4.0",
+    "nodejs-websocket": "^1.7.2",
+    "ora": "^4.0.3",
     "prop-types": "^15.7.2",
+    "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
     "vue-router": "^3.1.3"
   }

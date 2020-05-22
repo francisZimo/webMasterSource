@@ -7,11 +7,29 @@
 </head>
 <body>
 <script>
-  console.log(_.has({ 'a': 'ceshi', 'b': 'xiaonmi' }, 'b'))
-  // console.log(_.has({ 'a': {'b':'wocao'} }, ['a','bb']))
-  var object = { 'a': { 'b': 2 } };
-  console.log(_.has(object, ['a','b']))
-  var other = _.create({ 'a': _.create({ 'b': 2 }) });
+    function create(){
+      let obj=new Object()
+      let Con =[].shift.call(arguments)
+      obj.__proto__=Con.prototype
+      let result=Con.apply(obj)
+      return result instanceof Object?result:obj
+    }
+
+    function parent () {
+      this.name='老王'
+      return {
+        origin:'王室'
+      }
+    }
+    parent.prototype.speak=function(){
+      console.log('回家吃饭了')
+    }
+
+    // let p1=create(parent)
+    let p1=new parent()
+    console.log(p1.name)
+    p1.speak()
+
 </script>
 </body>
 </html>

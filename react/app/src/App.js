@@ -7,6 +7,7 @@ function App() {
   return (
     <div className="App">
       <h3>React Master</h3>
+      <hr/>
       <Routes></Routes>
     </div>
   );

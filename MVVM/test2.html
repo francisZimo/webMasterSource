@@ -5,6 +5,48 @@
     <title>Title</title>
 </head>
 <body>
+<script>
+  // RegExp.prototype.myExecAll=function myExecAll(){
+  //   //this:当前要处理的正则
+  //   //str:当前要处理字符串
+  //   let str=arguments[0]||'',
+  //     //首先判断this是否加g，如果没有加g只执行一次exec即可，把执行一次的结果直接返回
+  //     result=[];
+  //   if(!this.global){
+  //     return this.exec(str);
+  //   }
+  //   let ary=this.exec(str);
+  //   while(ary){ //ary!=null 还可以捕获到内容，继续下次捕获
+  //     result.push(ary[0]);//把当前本次捕获到的结果存放在result中
+  //     ary=this.exec(str); //继续执行下一次捕获
+  //   }
+  //   return result;
+  // }
+  // let s=`{{aaa}}---xx`
+  let s=`{{a.b}}---{{b.c}}---{{c.e}}`
+    let reg=/\{\{(.+?)\}\}/g;
+  // // let result=reg.exec(s)
+  // console.log(reg.myExecAll(s))
+  // var str='her name is {0}, i am {1} years old'
+  // //需求：把{n}整体捕获到，而且还要把括号中的数字也获取到；
+  // var reg=/\{(\d)+\}/g;
+
+  // console.log(str.match(reg)) //['{0}','{1}']
+  //想要获取小分组的内容，我们只能用exec处理了
+  // console.log(reg.exec(str))
+  console.log(getAllMatch(reg, s),'==结果')
+
+  function getAllMatch(reg,str){ //默认有g
+    var ary=reg.exec(str);
+    var result=[];
+    while(ary){
+      result.push(ary[1]);
+      ary=reg.exec(str);
+    }
+    return result;
+  }
+</script>
+
 
 </body>
 </html>

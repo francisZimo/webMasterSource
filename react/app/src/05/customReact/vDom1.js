@@ -2,9 +2,9 @@ export const initVnode=(vNode,container)=>{// 把vNode转换成Dom
   const {vType}=vNode;
   let node=null;
   if(!vType){
-    node=initTextNode(vNode)
+    node=initTextNode(vNode,container)
   }
-  if(vType===1 ){
+  if(vType===1){
     //原生标签
     node=initHtmlNode(vNode,container)
   }
@@ -25,7 +25,14 @@ function initHtmlNode(vnode,container){
   const {children,...res}=props
   if(children){
     children.forEach(item=>{
-      node.appendChild(initVnode(item,vnode))
+      if(Array.isArray(item)){
+        item.forEach(aryItem=>{
+          node.appendChild(initVnode(aryItem,node))
+        })
+      }else{
+        node.appendChild(initVnode(item,node))
+      }
+
     })
   }
   Object.keys(res).map(key=>{
