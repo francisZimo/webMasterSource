@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input id="root"/>
+<button id="btn">点击</button>
+<script>
+    function debounce(fn,wait){
+      let time=null;
+      return function(){
+        clearTimeout(time)
+        time=setTimeout(()=>{
+          console.log(arguments,'==arguments')
+          fn.apply(this,arguments)
+        },wait)
+      }
+    }
+    function sayHi(){
+      console.log('防抖成功')
+    }
+    let root=document.getElementById('root')
+    root.addEventListener('input',debounce(sayHi,1000))
+
+    let btn=document.getElementById('btn')
+    function sayParams(value){
+      return function fn(){
+        console.log('我的参数',value)
+      }
+    }
+    btn.addEventListener('click',debounce(sayParams('francis'),1000))
+</script>
+</body>
+</html>

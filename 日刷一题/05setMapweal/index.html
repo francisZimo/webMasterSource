@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  let set1 = new Set([1, 2, 3])
+  let set2 = new Set([4, 3, 2,5])
+    // 交集
+  let intersect=new Set([...set1].filter(value=>set2.has(value)))
+    // 差集
+  let difference=function(ary1,ary2){
+    let temp1,temp2
+    if(ary1.size>ary2.size){
+      temp1=ary1
+      temp2=ary2
+    }else{
+      temp1=ary2
+      temp2=ary1
+    }
+    return new Set([...temp1].filter(value=>!temp2.has(value)))
+  }
+
+
+    // 合集
+    let union=new Set([...set1,...set2])
+  console.log(intersect,'交集')
+  console.log(difference(set1,set2),'差级')
+  console.log(union,'合集')
+
+    let map1=new Map([['1',1],['1',2],['2','2'],[2,2]])
+  console.log(map1)
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/moment.js/2.26.0/moment.js"></script>
+</head>
+<body>
+<script>
+  // console.log(moment(new Date(), 'YYYY-MM-DD HH:mm:ss').valueOf())
+  let now=new Date()
+  now.setHours(0);
+  now.setMinutes(0);
+  now.setSeconds(0);
+  console.log(now.getTime(),'是分秒')
+  console.log(moment(now.getTime()).format('YYYY-MM-DD HH:mm:ss'))
+  // console.log(moment(now).valueOf())
+  // console.log(now, 'YYYY-MM-DD HH:mm:ss')
+</script>
+</body>
+</html>

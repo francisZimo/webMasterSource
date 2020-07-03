@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  // function Foo() {
+  //   Foo.a = function() {
+  //     console.log(1)
+  //   }
+  //   this.a = function() {
+  //     console.log(2)
+  //   }
+  // }
+  // Foo.prototype.a = function() {
+  //   console.log(3)
+  // }
+  // Foo.a = function() {
+  //   console.log(4)
+  // }
+  // Foo.a(); //4
+  // let obj = new Foo();
+  // obj.a(); //2
+  // Foo.a(); //1
+  // var name = 'Tom';
+  (function(name) {
+    console.log(name)
+    function name(){
+      console.log('xxx')
+    }
+  })(name);
+
+    function f(a){
+      console.log(a);
+      var a=123;
+      console.log(a);
+      function a(){}
+      var b=function(){}
+      function d(){}
+  }
+  f(1)
+</script>
+</body>
+</html>

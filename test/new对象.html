@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function newFunc(father,...res){
+        let obj={}
+        obj.__proto__=father.prototype
+      let result=father.apply(obj,res)
+      console.log(result,'==result')
+      if(Object.prototype.toString.call(result)==='[object Object]'||Object.prototype.toString.call(result)==='[object Function]'){
+        console.log('结果')
+        return result
+      }else{
+        return obj
+      }
+    }
+    function Car(year,name){
+      this.year=year;
+      this.name=name;
+      return {result:this.year+this.name}
+    }
+    let car1=newFunc(Car,122,'xxxx')
+    console.log(car1.year,car1.name)
+</script>
+</body>
+</html>

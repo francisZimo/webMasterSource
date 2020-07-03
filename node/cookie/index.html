@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function setCookie(cName,cValue,exDays){
+      let day=new Date()
+      day.setTime(day.getTime()+exDays*24*60*60*1000)
+      let expires=`expires=${day.toGMTString}`
+      document.cookie=`${cName}=${cValue};expires=${expires}`
+    }
+    function getCookie(cName){
+        let name=cName+'='
+        let ca=document.cookie.split(';')
+      for(let i=0;i<ca.length;i++){
+        let c=ca[i].trim()
+        if(c.indexOf(name)===0){
+          return c.substring(name.length,c.length)
+        }
+      }
+     return ''
+    }
+    function checkCookie(){
+        let userName=getCookie('userName')
+      if(userName!==''){
+        alert('欢迎回来'+userName)
+      }else{
+        userName=prompt('请输入你的姓名','')
+        if(userName!==''&&userName!==null){
+          setCookie('userName',userName,365)
+        }
+      }
+    }
+
+    console.log(document.cookie,'===cookiexx')
+    setCookie('test1','小王',5)
+    setCookie('test2','小明',4)
+    checkCookie()
+</script>
+</body>
+</html>

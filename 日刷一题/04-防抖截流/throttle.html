@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="throttle">节流阀</button>
+<script>
+    function throttle(fn,wait){
+      let flag=true
+      return function(){
+        if(!flag) return
+        flag=false
+        setTimeout(()=>{
+          fn.apply(this,arguments )
+          flag=true
+        },wait)
+      }
+    }
+    let btn=document.getElementById('throttle')
+    function sayHi(value){
+      return function(e){
+        console.log('说：'+value,e.target.innerHTML)
+      }
+    }
+    // btn.addEventListener('click',throttle(sayHi('francis'),1000))
+
+
+    function throttle1(fn,await){
+      let activeTime=0;
+      return function(){
+        let nowTime=Date.now()
+        if(nowTime-activeTime>await){
+          fn.apply(this,arguments)
+          activeTime=Date.now()
+        }
+      }
+    }
+    btn.addEventListener('click',throttle1(sayHi('francis'),1000))
+
+    downloadFile = (url) => {
+      const link = document.createElement('a')
+      link.href = url
+      link.download='资源文件'
+      document.body.appendChild(link)
+      link.click()
+      window.URL.revokeObjectURL(link.href)
+      document.body.removeChild(link)
+    }
+    // function downloadFile(fileurl, filename) {
+    //   let  a = document.createElement('a');       
+    //   a.download = filename;
+    //   a.style.display = 'none';
+    //   let  blob = new Blob(fileurl);                     
+    //   a.href = URL.createObjectURL(blob);
+    //   document.body.appendChild(a);
+    //   a.click();                                             
+    //   document.body.removeChild(a);               
+    //
+    // };
+
+    downloadFile('http://f.shudong.wang/0110%E4%BC%98%E5%8C%96-%E6%9D%8E%E8%83%9C-2020-01-10.pdf')
+</script>
+</body>
+</html>
