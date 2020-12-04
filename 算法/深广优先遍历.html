@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let tree={
+      val:'a',
+      children:[
+        {
+          val:'b',
+          children: [
+            {val:'d',children:[]},
+            {val:'e',children:[]}
+          ]
+        },
+        {
+          val:'c',
+          children: [
+            {val:'f',children:[]},
+            {val:'g',children:[]}
+          ]
+        }
+      ]
+    }
+    // 深度优先遍历
+    function dfs(obj){
+      console.log(obj.val)
+      obj.children.forEach(child=>{
+        dfs(child)
+      })
+    }
+    // dfs(tree)
+
+    // 广度优先遍历
+    function bfs(obj){
+      let queue=[obj]
+      while(queue.length>0){
+        let item=queue.shift()
+        console.log(item.val)
+        item.children.forEach(data=>{
+          queue.push(data)
+        })
+      }
+
+    }
+    bfs(tree)
+</script>
+</body>
+</html>

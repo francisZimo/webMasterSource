@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  // const promises = [2, 3, 5, 4, 11, 13].map(function (id) {
+  //   console.log('id',id)
+  // });
+
+  const p1 = new Promise((resolve, reject) => {
+    resolve('hello');
+  })
+    .then(result => result)
+    .catch(e => e);
+
+  const p2 = new Promise((resolve, reject) => {
+    // throw new Error('报错了');
+    reject('失败了')
+  })
+    .then(result => result)
+    // .catch(e => e);
+
+  Promise.all([p1, p2])
+    .then(result =>{console.log('success'); console.log(result)} )
+    .catch(e => {console.log('logxxx');console.log(e) });
+
+</script>
+</body>
+</html>

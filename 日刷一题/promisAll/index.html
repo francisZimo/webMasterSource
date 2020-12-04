@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function promiseAll(promiseAry){
+
+      return new Promise(function(resolve,reject){
+        if(!Array.isArray(promiseAry)){
+          return '参数必须是数组'
+        }
+        let result=[];
+        let count=0;
+        for(let i=0;i<promiseAry.length;i++){
+          promiseAry[i].then(
+            (value)=>{
+              result[i]=value;
+              count++;
+              if(count===promiseAry.length){
+                return resolve(result)
+              }
+
+            },
+            (reason)=>{
+              return reject(reason)
+            }
+          )
+        }
+      })
+
+    }
+    let promise1 = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        reject('定时器1')
+      }, 3000)
+    });
+    let promise2 = new Promise((resolve,reject )=> {
+      setTimeout(() => {
+        reject('定时器2')
+      }, 2000);
+    })
+    promiseAll([promise2, promise1]).then(res => {
+      console.log(res)
+    }).catch(value=>{
+      console.log('错误信息：',value)
+    })
+    Promise.all([promise2, promise1]).then(res=>{
+      console.log(res)
+    }).catch(value=>{
+      console.log('错误信息：',value)
+    })
+</script>
+
+</body>
+</html>

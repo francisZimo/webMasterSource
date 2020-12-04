@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    Promise.prototype.cusFinally=function(callback){
+      let P=this.constructor
+      return this.then(
+        value=>P.resolve(callback()).then(()=>value),
+        reason => P.resolve(callback).then(()=> throw reason)
+      )
+    }
+</script>
+</body>
+</html>
