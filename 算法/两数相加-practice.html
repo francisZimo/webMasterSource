@@ -11,60 +11,76 @@
       this.next=null
     }
 
-    // function array2ListNode(arr){
-    //   var line = arr.map((i,j)=>{
-    //     return new ListNode(i)
-    //   })
-    //   for(var j = 0;j<= line.length; j++){
-    //     line[j+1] && (line[j].next = line[j+1])
+    // function addTwoNumbers(l1,l2){
+    //   let a1=listNode2Array(l1);
+    //   let a2=listNode2Array(l2);
+    //   let aa=[]
+    //   let result=[]
+    //   if(a1.length<a2.length){
+    //     aa=a1;
+    //     a1=a2;
+    //     a2=aa;
     //   }
-    //   return line[0]
+    //   a1.forEach((item,index)=>{
+    //     result[index]=item+(a2[index]?a2[index]:0)
+    //   })
+    //   result.forEach((item,index)=>{
+    //     if(item>9){
+    //       result[index]=item%10;
+    //       if(result[index+1]!==undefined){
+    //         result[index+1]+=1
+    //       }else{
+    //         result[index+1]=1
+    //       }
+    //     }
+    //   })
+    //   return  array2ListNode(result)
     // }
-    // let ary=[2,3,4,5]
-    // console.log(array2ListNode(ary))
-    var addTwoNumbers = function(l1, l2) {
-      a1 = listNode2Array(l1)
-      a2 = listNode2Array(l2)
-      var aa = []
-      if(a1.length < a2.length){
-        aa = a1
-        a1 = a2
-        a2 = aa
+
+    function addTwoNumbers(l1,l2){
+      let sum=new ListNode(0)
+      let head=sum
+      let addOne=0
+      while(addOne||l1||l2){
+        let v1=l1!==null?l1.val:0
+        let v2=l2!==null?l2.val:0
+        let num=v1+v2+addOne;
+        addOne=num>=10?1:0
+        sum.next=new ListNode(num%10)
+        sum=sum.next
+        if(l1) l1=l1.next
+        if(l2) l2=l2.next
+
       }
-      var arr = []
-      a1.forEach((i,j)=>{
-        arr.push(i + (a2[j] || 0))
-      })
-      arr.forEach((i,j)=>{
-        if(i>9){arr[j] = i%10; arr[j+1] ? arr[j+1] +=1 : arr[j+1] =1}
-      })
-      return array2ListNode(arr)
-    };
-    // 链表转数组
-    function listNode2Array(ListNode,val){
-      var arr = val && val.length ? val : []
-      arr.push(ListNode.val)
-      if (ListNode.next){
-        return listNode2Array(ListNode.next,arr)
-      }
-      return arr
-    }
-    // 数组转链表
-    function array2ListNode(arr){
-      var line = arr.map((i,j)=>{
-        return new ListNode(i)
-      })
-      for(var j = 0;j<= line.length; j++){
-        line[j+1] && (line[j].next = line[j+1])
-      }
-      return line[0]
+      return head.next
+
     }
 
-    let s1=[7,7,7,9]
-    let s2=[5,5,5]
-    console.log(addTwoNumbers(array2ListNode(s1),array2ListNode(s2)))
+    function array2ListNode(ary){
+      let result=[]
+      for(let i=0;i<ary.length;i++){
+        result.push(new ListNode(ary[i]))
+      }
+      for(let j=0;j<result.length;j++){
+        if(result[j+1]){
+          result[j].next=result[j+1]
+        }
+      }
+      return result[0]
+    }
 
+    function listNode2Array(listNode,ary){
+      let array=ary?ary:[]
+      array.push(listNode.val)
+      if(listNode.next){
+        listNode2Array(listNode.next,array)
+      }
+      return array
+    }
 
+    let l1=array2ListNode([7,7,7,9])
+    let l2=array2ListNode([5,5,5])
+    console.log(addTwoNumbers(l1, l2))
 
 
 </script>

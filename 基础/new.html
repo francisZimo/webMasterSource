@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function MyNew(Func,...args){
+      let obj=Object.create(Func.prototype)
+      console.log(obj)
+      let result=Func.call(obj,...args)
+      if(typeof result==='object'){
+        return result
+      }
+      return obj
+    }
+    let foo=function(name){
+      this.name=name||'test'
+      return {age:'23'}
+    }
+
+    let child=MyNew(foo)
+    // console.dir(child)
+
+</script>
+</body>
+</html>

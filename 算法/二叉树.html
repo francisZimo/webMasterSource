@@ -5,6 +5,56 @@
     <title>Title</title>
 </head>
 <body>
+<script>
+  var preorderTraversal = function(root,ary) {
+    let result=ary?ary:[];
+    if(root!==null){
+      result.push(root.val)
+    }
+    if(root.left!==null){
+      preorderTraversal(root.left,result)
+    }
+    if(root.right!==null){
+      preorderTraversal(root.right,result)
+    }
+    return result
+  };
 
+  let houxu=function(root){
+    if(root===null){
+      return []
+    }
+    let stack=[]
+    let res=[]
+    stack.push(root)
+    while(stack.length){
+      let node=stack.pop()
+      res.push(node.val)
+      if(node.left){
+        stack.push(node.left)
+      }
+        if(node.right){
+          stack.push(node.right)
+        }
+    }
+     res=res.reverse()
+    return res
+  }
+  let root={
+    val:1,
+    right:{
+      val:3,
+      left:null,
+      right:null
+    },
+    left: {
+      val: 2,
+      left: null,
+      right: null
+    }
+  }
+  console.log(houxu(root),'===xxx')
+
+</script>
 </body>
 </html>

@@ -3,10 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="./utils/index.js"></script>
 </head>
 <body>
 <script>
-
+    let list=[1,2,3,4,5]
+    let newList=arrayToList(list)
+    console.log(newList)
+    var reverseList = function(head) {
+      // 双指针
+      let cur=null, prev=head;
+      while(prev){
+        let next=prev.next;
+        prev.next=cur;
+        cur=prev;
+        prev=next;
+      }
+      return cur;
+    };
+    console.log(reverseList(newList))
 </script>
 </body>
 </html>

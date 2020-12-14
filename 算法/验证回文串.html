@@ -5,6 +5,27 @@
     <title>Title</title>
 </head>
 <body>
-
+<script>
+  /**
+   * @param {string} s
+   * @return {boolean}
+   */
+  var isPalindrome = function(s) {
+    if(s==='') return true
+    s=s.toLowerCase()
+    let reg=/[a-z|\d*]/
+    let str1=''
+    for(let i=0;i<s.length;i++){
+      if(s.charAt(i).match(reg)){
+        str1+=s.charAt(i)
+      }
+    }
+    let str2=str1.split("").reverse().join("")
+    return str1===str2
+  };
+  // let s= "A man, a plan, a canal: Panama"
+  let s="race a car"
+  console.log(isPalindrome(s),'=====xxx')
+</script>
 </body>
 </html>

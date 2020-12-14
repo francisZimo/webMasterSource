@@ -5,6 +5,45 @@
     <title>Title</title>
 </head>
 <body>
+<script>
+    function moveZeroes(nums){
+      let j=0;
+      for(let i=0;i<nums.length;i++){
+        if(nums[i]!==0){
+          nums[j]=nums[i]
+          if(i!==j){
+            nums[i]=0
+          }
+          j++
+        }
+      }
+    }
+    // function moveZeroes(nums){
+    //   if(nums===null){
+    //     return;
+    //   }
+    //   let j=0;
+    //   for(let i=0;i<nums.length;i++){
+    //     if(nums[i]!==0){
+    //       let tmp=nums[i]
+    //       nums[i]=nums[j]
+    //       nums[j]=tmp
+    //       j++
+    //     }
+    //   }
+    // }
+    let a=[1]
+    console.log(moveZeroes(a))
 
+    // let i = 0, j = 0
+    // for (; i < nums.length; i++) {
+    //   if (nums[i] !== 0) {
+    //     let temp = nums[j]
+    //     nums[j] = nums[i]
+    //     nums[i] = temp
+    //     j++
+    //   }
+    // }
+</script>
 </body>
 </html>

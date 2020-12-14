@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  var subsets = function(nums) {
+    let res=[]
+    let path=[]
+    const backTracking=(nums,startIndex)=>{
+      if(path.length<=nums.length){
+        res.push([...path])
+      }
+      for(let i=startIndex;i<nums.length;i++){
+         path.push(nums[i])
+         backTracking(nums,i+1)
+         path.pop()
+      }
+    }
+    backTracking(nums,0)
+    return res
+  };
+  let arr=[1,2,3]
+  console.log(subsets(arr))
+</script>
+</body>
+</html>

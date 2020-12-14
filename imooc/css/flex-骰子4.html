@@ -6,11 +6,14 @@
     <style>
         .main{
             display: flex;
-
             width:60px;
             height:60px;
             padding:10px;
             border:2px solid red;
+            flex-wrap:wrap;
+            align-content: space-between;
+            justify-content: flex-end;
+
         }
         .main div{
 
@@ -21,21 +24,14 @@
             border-radius: 50%;
 
         }
-        .col1{
-            align-self: flex-start;
-        }
-        .col2{
-            align-self: center;
-        }
-        .col3{
-            align-self: flex-end;
-        }
+
     </style>
 </head>
 <body>
 <div class="main">
     <div class="col1"></div>
     <div class="col2"></div>
+    <div class="col3"></div>
     <div class="col3"></div>
 
 </div>

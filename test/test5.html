@@ -5,6 +5,75 @@
     <title>Title</title>
 </head>
 <body>
+<script>
 
+//   function wait() {
+//     return new Promise(resolve =>{
+//       console.log('111111')
+//         setTimeout(()=>{
+//           console.log('aaaaa')
+//           resolve()
+//         }, 3 * 1000)
+//     }
+//     )
+//   }
+//
+//   async function main() {
+//     console.time();
+//     const x = wait();
+//     const y = wait();
+//     const z = wait();
+//     console.log('a1')
+//     await x;
+//     console.log('a2')
+//     await y;
+//     console.log('a3')
+//     await z;
+//     console.timeEnd();
+//   }
+//   main();
+
+  // async function test() {
+  //   console.time();
+  //   await
+  //     new Promise(resolve =>{
+  //       console.log('111')
+  //         setTimeout(resolve, 2 * 1000)
+  //     }
+  //
+  //     )
+  //   await
+  //     new Promise(resolve =>
+  //       {
+  //         console.log('222')
+  //         setTimeout(resolve, 2 * 1000)
+  //       }
+  //     )
+  //   await
+  //     new Promise(resolve =>
+  //       {
+  //         console.log('333')
+  //         setTimeout(resolve, 2 * 1000)
+  //       }
+  //     )
+  //   console.timeEnd();
+  // }
+  // test()
+
+function wait() {
+  return new Promise(resolve =>
+    setTimeout(resolve, 2 * 1000)
+  )
+}
+
+async function main() {
+  console.time();
+  await wait();
+  await wait();
+  await wait();
+  console.timeEnd();
+}
+main();
+</script>
 </body>
 </html>

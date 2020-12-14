@@ -5,6 +5,74 @@
     <title>Title</title>
 </head>
 <body>
+<script>
+    let root={
+      val:1,
+      left:{
+        val:2,
+        left:null,
+        right:null
+      },
+      right:{
+        val:3,
+        left:{
+          val:4,
+          left:null,
+          right:null
+        },
+        right:null
+      }
+    }
 
+    function traversal(root){
+      if(root==null){
+        return 0
+      }
+      let queue=[[root,1]]
+
+      while(queue.length){
+
+        let [node,l]=queue.shift()
+
+        if(!node.left&&!node.right){
+          return l
+        }
+        if(node.left) queue.push([node.left,l+1])
+        if(node.right) queue.push([node.right,l+1])
+      }
+
+    }
+
+    function traversal1(root){
+      if(root===null){
+        return 0
+      }
+      if(root.left!==null&&root.right===null){
+        return 1+traversal1(root.left)
+      }
+      if(root.right!==null&&root.left===null){
+        return 1+traversal1(root.right)
+      }
+
+      return 1+Math.min(traversal1(root.left),traversal1(root.right))
+    }
+
+    function traversal2(root){
+      if(root===null){
+        return 0
+      }
+      let queue=[[root,1]]
+      while(queue.length){
+        let [node,l]=queue.shift()
+        if(!node.left&&!node.right){
+          return l;
+        }
+        node.left&&queue.push([node.left,l+1])
+        node.right&&queue.push([node.right,l+1])
+      }
+    }
+
+    console.log(traversal2(root))
+</script>
 </body>
 </html>

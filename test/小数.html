@@ -5,6 +5,21 @@
     <title>Title</title>
 </head>
 <body>
+<script>
+  // 保留两位小数，不实用math.floor 是由于会存在精度问题
+  formatDecimal=(num, decimal) =>{
+    num = num.toString()
+    let index = num.indexOf('.')
+    if (index !== -1) {
+      num = num.substring(0, decimal + index + 1)
+    } else {
+      num = num.substring(0)
+    }
+    return parseFloat(num)
+  }
 
+  console.log(formatDecimal(5.456,4))
+
+</script>
 </body>
 </html>

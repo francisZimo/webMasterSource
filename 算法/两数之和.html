@@ -5,6 +5,20 @@
     <title>Title</title>
 </head>
 <body>
-
+<script>
+  let twoSum = function(nums, target) {
+    let record={}
+    for(let i=0;i<nums.length;i++){
+      let temp=target-nums[i]
+      let recordItem=record[temp]
+      if(recordItem!==undefined){
+        return [record[temp],i]
+      }
+      record[nums[i]]=i
+    }
+  };
+  let ary=[3,2,4]
+  console.log(twoSum(ary, 6))
+</script>
 </body>
 </html>
